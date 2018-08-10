@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset="utf-8">
+	<title>Yantragene 2k19</title>
+    <link rel="icon" href="https://yantragene.co.in/images/minLogo.png" type="image/jpg" sizes="16x16">
+
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href={% static "css/base.css" %}>
+	<script type="text/javascript" src={% static "javascript/base.js" %}></script>
+	<style type="text/css">
+		
+		body{	
+			background-image:url('{% static "images/bg-image1.jpg" %}');
+
+		}
+		body{
+	
+	background-attachment: fixed;
+}
+
+#yantra_icon{
+	width:40px;
+	height:40px;
+}
+#nav_bar{
+	position:fixed;
+	top:0px;
+}
+
+	</style>
+
+	{% block head %}
+	{% endblock %}
+
+</head>
+<body>
+	
+	<div id="#nav_bar">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	    
+	    <div class="navbar-header">
+	        <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	        </button>
+	        <img id="yantra_icon"src={% static 'images/website-icon.png' %}/>
+	    </div>
+	    
+	    <div id="navbarCollapse" class="collapse navbar-collapse">
+	        <ul class="nav navbar-nav">
+	          <li class=""><a href="#"></a></li>
+
+		      <li><a class="navbar-brand" href="{% url 'home:home' %}">Yantragene@2k19</a></li>
+		      <li id="home_nav"><a href="{% url 'home:home' %}">Home</a></li>
+		      <li id="event_nav"><a href="{% url 'events:events' %}">Events</a></li>
+		      <li id="note_nav"><a href="{% url 'notifications:notifications' %}">Notifications</a></li>
+		      <li id="aboutus_nav"><a href="{% url 'aboutus:aboutus' %}">About Us</a></li>
+		      <li id="gallery_nav"><a href="{% url 'gallery:gallery' %}">Gallery</a></li>
+		      <li id="contact_nav"><a href="{% url 'contactus:contactus' %}">Contact Us</a></li>
+		      
+	        
+	        	{% if user.is_authenticated %}
+	        		
+	        		<li id="welcome_nav" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Welcome {{ user.first_name }}<span class="caret"></span></a>
+			        <ul class="dropdown-menu">
+			          <li><a href="{% url 'accounts:profile' id=user.profile.id %}">View Profile</a></li>
+			          <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+			          
+			        </ul>
+			      </li>
+
+	        	{% else %}
+	        		<li id="register_nav"><a href="{% url 'accounts:login' %}">Register/Login</a></li>
+	        	{% endif %}
+	            
+	        	
+	        </ul>
+	    </div>
+	</nav>
+	</div>
+	<br><br><br>
+
+
+	{% block body %}
+	{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+	<script type="text/javascript" src={% static "javascript/profile.js" %}></script>
+{% endblock %}
+{% block body %}
+	<div class="row">
+	<div class="col-md-4 col-md-offset-4 col-sm-10 col-sm-offset-1">
+	{% if user.is_authenticated %}
+		<center><h2 class="white">Welcome {{ user.first_name }} {{ user.last_name }}</h2></center>
+		<center><h3 class="white">Your Details:</h2></center>
+		<center><p class="white"><b>Your Email : </b>{{user.email}}</p></center>
+		<center><p class="white"><b>Your Mobile No. : </b>{{user.profile.mobile}}</p></center>
+		<h3 class="white">Your partipation(s):</h3>
+		{% if length %}
+			{% for p in participant %}
+			<div class="well part_div">
+				<h3><b>Team Name : </b>{{p.team_name}}</h3>
+				<h3><b>Event Name : </b>{{p.events_name}}</h3>
+				<h4><b>Member(s) :</b>You, {{p.member2}} {{p.member3}} {{pt.member4}}</h4>
+				<button class="btn btn-default btn-danger">
+					<a href="{% url 'accounts:delete' id=p.id proid=user.profile.id %}" onclick="return confirm('Are you sure?')">Remove</a>
+				</button>
+			</div>
+			{% endfor %}
+		
+		{% else %}
+			<p class="white">You have Not Participated in any event yet.</p>
+			<button class="btn btn-default btn-info">
+					<a href="{% url 'events:events' %}">Paricipate</a>
+				</button>
+		{% endif %}
+		{% else %}
+			<p class="white">You have Not Participated in any event.</p>
+		{% endif %}
+	<br>
+	
+
+
+	</div>
+	</div>
+	<style type="text/css">
+		.white,a{
+			color:white;
+			font-family: tahoma;
+		}
+		.part_div{
+			background:white;
+			border:1px solid yellow;
+			border-radius:5px;
+			color:#273746;
+		}
+		a:hover{
+			color:white;
+		}
+	</style>
+{% endblock %}

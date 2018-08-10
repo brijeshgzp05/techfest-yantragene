@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+	<script type="text/javascript" src={% static "javascript/gallery.js" %}></script>
+{% endblock %}
+
+{% block body %}
+
+	<center style="color:white;"><h1>Memorable Moments</h1></center>
+	<br><br>
+	{% if images %}
+	<div class="container">
+	<div class="row">
+		{% for i in images %}
+	    <div class="col-md-4 col-sm-10">
+	        <div class="thumbnail image">
+	      
+	    
+				<a href="{{ i.imagename.url }}">
+		        	<center><img src="{{ i.imagename.url }}" alt="{{ i.imageid }}" style="width:100%;"></center>
+		    	</a>
+	     
+		
+	        </div>
+	    </div>
+	  {% endfor %}
+	</div>
+	</div>
+    {% else %}
+    	<center><h1>No Data As of Now</h1></center>
+    {% endif %}
+
+
+{% endblock %}

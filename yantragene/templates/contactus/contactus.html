@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+	<script type="text/javascript" src={% static "javascript/contact.js" %}></script>
+{% endblock %}
+
+{% block body %}
+
+	<center style="color:white;"><h1>REACH US</h1></center>
+	<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-sm-12">
+			<div class="mapouter">
+				<div class="gmap_canvas">
+					<iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=feroze%20gandhi%20institute%20raebareli&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+					<a href="https://www.maps-erstellen.de">maps-erstellen.de</a>
+				</div>
+
+			</div>
+		</div>
+		<div class="col-md-5 col-md-offset-1 col-sm-12" id="content">
+			<p><b>Call us on</b> : 7007514827, 896084564</p>
+			<p><b>Mail us at</b> : fest@yantragene.co.in</p>
+			<p><b>Our college website is</b> : <a href="https://fgiet.ac.in">fgiet.ac.in</a></p>
+			<p>Feroze Gandhi Institute Of Engineering AndTechnology,</p>
+			<p>Lucknow Road, Near Ratapur Chauraha,</p> 
+			<p>Ratapur, Raebareli,</p>
+			<p>Uttar Pradesh 229316, India</p>
+			
+			<center><h3>Send Us Your Feedback</h3></center>
+			<form action="{% url 'contactus:feedback' %}" method="get">
+				{{form}}
+				<br>
+				<center>
+					<input type="submit" value="Send" class="btn btn-default btn-small btn-success" onclick="alert('We apppreciate your suggestion')">
+					<input type="reset" value="Reset" class="btn btn-default btn-small btn-info">
+				</center>
+			</form>
+		</div>
+
+	</div>
+	</div>
+	<style>
+		.mapouter{
+			text-align:right;
+			height:500px;
+			width:600px;
+		}
+		.gmap_canvas {overflow:hidden;
+			background:none!important;
+			height:500px;
+			width:600px;
+		}
+		#content{
+			color:#D0D3D4;
+			border:2px solid #D0D3D4;
+			border-radius: 5px;
+			font-size:15px;
+			font-family: tahoma;
+		}
+	</style>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'base_events_page.html' %}
+
+
+{% block head %}
+{% endblock %}
+
+
+
+{% block desc %}
+
+	<h3>Event Details</h3>
+Design a bridge by using Popsicle sticks (ice cream sticks) satisfying the tated constraints.
+
+<h3>Judging Criteria</h3><p>
+First the structure will be reviewed to check if it violates any rules mentioned above.
+Scoring of structure will be based on performance as well as aesthetics.
+The bridge will be scored on how well the material has been used to support the load. The efficiency will be calculated as the ultimate load capacity and bridge weight.
+Winner will be decided on the basis of maximum efficiency.
+In case of any discrepancies, the decision taken by the Judges and the council will be the final verdict.	</p>
+{% endblock %}
+
+
+{% block rules %}
+<h3>RULES AND REGULATIONS</h3><p>
+A suspension bridge is to be constructed by the participants.
+Use ice-cream sticks of standard dimensions.
+Sticks can be altered physically, notched at any angles.
+Only Fevicol can be used as adhesive, use of other adhesives may lead to disqualification.
+Use of thread is allowed.</p>	
+{% endblock %}
+
+
+{% block cord %}
+{% endblock %}
+
+
+{% block reg %}
+	{% if user.is_authenticated %}
+		<h3>Team Size : 5, Minimum : 1</h3>
+		<p>You will be the first member</p>
+		<form action="{% url 'events:register' %}" method="get">
+			
+			<label>Team Name:</label>
+			<input class="form-control" type="text" name="team_name" placeholder="Enter Team Name" required="required">
+			<label>Member 2 (Optional):</label>
+			<input class="form-control" type="text" name="member2" placeholder="Enter 2nd member name" value="">
+			<label>Member 3 (Optional):</label>
+			<input class="form-control" type="text" name="member3" placeholder="Enter 3nd member name" value="">
+			<label>Member 4 (Optional):</label>
+			<input class="form-control" type="text" name="member4" placeholder="Enter 4nd member name" value="">
+			<label>Member 5 (Optional):</label>
+			<input class="form-control" type="text" name="member5" placeholder="Enter 5nd member name" value="">
+			<input type="hidden" name="event_id" value="{{ events.id }}">
+			<input type="hidden" name="events_name" value="{{ events.ename }}">
+			<input type="hidden" name="profile_id" value="{{ user.profile.id }}"><br>
+
+			<center>
+				<input class="btn btn-default btn-success" type="submit" value="Submit">
+				<input class="btn btn-default btn-info" type="reset" value="Reset">
+			</center>
+
+		</form>
+		<br><br>
+	{% else %}
+		<h2>You are not logged in.</h2><br>
+		<button class="btn btn-default btn-info"><a href="{% url 'accounts:login' %}">Click Here To Login/Register</a></button>
+		<br>
+	{% endif %}	
+{% endblock %}
+
+
+
+			
+{% block body %}
+{% endblock %}
+
+

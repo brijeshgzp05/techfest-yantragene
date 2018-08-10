@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+	<script type="text/javascript" src={% static "javascript/register.js" %}></script>
+{% endblock %}
+{% block body %}
+	
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4 col-sm-10 col-sm-offset-1">
+			<form action="" method="post">
+				<center><p style="color:red;">{{msg}}</p></center>
+				{% csrf_token %}
+				<label>First Name:</label>
+				<input type="text" name="fname" required='required' placeholder="Your first name" class="form-control"><br>
+
+				<label>Last Name:</label>
+				<input type="text" name="lname" required='required' placeholder="Your Last name" class="form-control"><br>
+
+				<label>Username:</label>
+				<input type="text" name="uname" required='required' placeholder="Preffered Username" class="form-control"><br>
+
+				<label>Password:</label>
+				<input type="password" name="pwd" required='required' placeholder="Password" class="form-control"><br>
+
+				<label>Confirm Password:</label>
+				<input type="password" name="cpwd" required='required' placeholder="Confirm Password" class="form-control"><br>
+
+				<label>Email:</label>
+				<input type="email" name="email" required='required' placeholder="Your email address" class="form-control"><br>
+
+				<label>Mobile No.:</label>
+				<input type="text" name="mobile" required='required' placeholder="Your Mobile No." class="form-control"><br>
+
+				
+				<center>
+						<input type="submit" value="Submit" class="btn btn-default btn-success">
+						<input type="reset" value="Reset" class="btn btn-default btn-info">
+				</center>
+
+			</form>
+		</div>
+	</div>
+	<style type="text/css">
+		label{
+			color:white;
+		}
+	</style>
+{% endblock %}
+

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block head %}
+<script type="text/javascript" src={% static "javascript/about.js" %}></script>
+<link rel="stylesheet" type="text/css" href={% static "css/about.css" %}/>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-sm-10 ">
+			
+			<h4 style="text-align:justify">
+			YANTRAGENE is the annual technical festival of FEROZE GANDHI INSTITUTE OF ENGINEERING AND TECHNOLOGY, RAEBARELI. Yantragene was started in the year 2k16.To strengthen the spirit and to further reinforce the role of young minds it has come up with enriching experience of innovation, competition and learning . Yantragene’18 is scheduled for the month of April. Yantragene is entirely managed by students of FGIET. Yantragene is true believer of united we stand divided we fall. The word ‘Yantragene’ is originated from the Sanskrit word Yantra and English word gene. Yantragene comprises of twenty one events of various branch.
+			</h4>
+
+		
+	
+		
+			<table class="table">
+				<tr>
+					<th scope="col">Events</th>
+					<th scope="col">Teams Participated</th>
+					<th scope="col">Prize Money</th>
+				</tr>
+				<tr>
+					<td>{{events}}</td>
+					<td>{{teams_paricipated}}</td>
+					<td>{{prize_money}}</td>
+				</tr>
+			</table>
+		</div>
+		<div class="col-md-6 col-sm-10 ">
+			<img src="{% static 'images/About-us.jpg' %}" class="img-responsive img-rounded">
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

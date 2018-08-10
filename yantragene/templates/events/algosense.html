@@ -1,0 +1,98 @@
+{% extends 'base_events_page.html' %}
+
+
+{% block head %}
+{% endblock %}
+
+
+
+{% block desc %}	
+
+	
+	<ul class="list-unstyled">
+		<li>Coding is a combination of artistry and engineering. So gear up everyone for the befalling event.</li>
+		<li>“ALGOSENSE”, a bewildering platform to showcase your competency and mutation in fabricating the algorithm and programming.</li>
+		<li>The event "ALGOSENSE" provides you with the opportunity to show and enhance your skills on Languages like “C”,”Java”,”Python” &”C++”.</li>
+	</ul>
+	<br>
+	<h2>Judging Criteria</h2>
+	<ul class="list-unstyled">
+		<li>Accuracy of your output.</li>
+		<li>Complexity of algorithm.</li>
+		<li>Problem Solving Approach.</li>
+
+	</ul>
+
+{% endblock %}
+
+
+{% block rules %}	
+<ul class="list-unstyled">
+	<li>The event will have 2 rounds.</li>
+	<li>Maximum Team Size is 2 students.</li>
+</ul>
+<br>
+<h2>1. Qualifier Round</h2>
+<ul class="list-unstyled">
+	<li>In this you will have 2 problems.</li>
+	<li>Top 20% of competitors will qualify this round.</li>
+	<li>Maximum 30 min will be given to solve the problem.</li>
+	<li>The contestant will qualify the round as soon as he/she solves the 2 questions correctly.</li>
+	<li>As soon as we will get the top 20% of the competitors the round will be called off.</li>
+</ul>
+<br>
+<h2>2. Final Round</h2>
+<ul class="list-unstyled">
+	<li>In this you will have 5 problems.</li>
+	<li>Top 2 competitors will be ranked 1st 2nd respectively.</li>
+	<li>The marking will be done according to accuracy of your output.</li>
+	<li>Maximum 90 min will be given to solve the problem.</li>
+ </ul>
+
+
+
+{% endblock %}
+
+
+{% block reg %}	
+	{% if user.is_authenticated %}
+		<h3>Team Size : 2, Minimum : 1, Maximum : 2</h3>
+		<p>You will be the first member</p>
+		<form action="{% url 'events:register' %}" method="get">
+			
+			<label>Team Name:</label>
+			<input class="form-control" type="text" name="team_name" placeholder="Enter Team Name" required="required">
+			<label>Member 2 (Optional):</label>
+			<input class="form-control" type="text" name="member2" placeholder="Enter 2nd member name" value="">
+			<input class="form-control" type="hidden" name="member3" placeholder="Enter 2nd member name"
+			value="">
+			<input class="form-control" type="hidden" name="member4" placeholder="Enter 2nd member name"
+			value="">
+			<input class="form-control" type="hidden" name="member5" placeholder="Enter 2nd member name"
+			value="">
+			<input type="hidden" name="event_id" value="{{ events.id }}">
+			<input type="hidden" name="events_name" value="{{ events.ename }}">
+			<input type="hidden" name="profile_id" value="{{ user.profile.id }}"><br>
+
+			<center>
+				<input class="btn btn-default btn-success" type="submit" value="Submit">
+				<input class="btn btn-default btn-info" type="reset" value="Reset">
+			</center>
+
+		</form>
+		<br><br>
+	{% else %}
+		<h2>You are not logged in.</h2><br>
+		<button class="btn btn-default btn-info"><a href="{% url 'accounts:login' %}">Click Here To Login/Register</a></button>
+		<br>
+	{% endif %}
+
+{% endblock %}
+
+
+
+			
+{% block body %}
+{% endblock %}
+
+

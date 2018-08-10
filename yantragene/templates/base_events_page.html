@@ -1,0 +1,184 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Yantragene 2k19</title>
+	<link rel="shortcut icon" href={% static 'images/website-icon.png' %} type="image/x-icon">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src={% static "javascript/base_events_js.js" %}></script>
+	
+	<style type="text/css">
+
+		body{	
+			background-image:url('{% static "images/bg-image1.jpg" %}');
+
+		}
+
+		#event_name{
+			color:aquamarine;
+			font-family: Modern;
+			font-size:7vw;
+		}
+		#heading_row{
+			height:40px;
+		}
+		.topics{
+			color:#B3B6B7;
+			font-size:30px;
+			text-align:center;
+			cursor:pointer;
+		}
+		.topics:hover{
+			color:#F0F3F4;
+
+		}
+
+		/*  events detail page css*/
+
+		#desc_div, #rules_div, #cord_div, #reg_div {
+			/*height:300px;*/
+			
+			border-radius: 5px;
+			background:white;
+			color:#17202A;
+
+		}
+		#rules_div, #cord_div, #reg_div{
+			display:none;
+		}
+		#desc_div{
+			display:block;
+		}
+
+		.cross{
+			position:relative;
+			top:3px;
+			left:99%;
+			width:20px;
+			height:20px;
+			float:left;
+			background:white;
+		}
+
+
+	</style>
+	
+	{% block head %}
+	{% endblock %}
+
+</head>
+<body>
+
+	<center><h1 id="event_name">{{event_title}}</h1></center>
+
+	<div class="container-fluid">
+		<div id="heading_row" class="row">
+			<div class="col-md-3 col-sm-10">
+				<div>
+					<h1 class="topics" id="desc_btn">Description</h1>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-10">
+				<div>
+					<h1 class="topics" id="rules_btn">Rules And Regulations</h1>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-10">
+				<div>
+					<h1 class="topics" id="cord_btn">Coordinators</h1>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-10">
+				<div>
+					<h1 class="topics" id="reg_btn">Register</h1>
+				</div>
+			</div>
+		</div>
+		
+
+
+
+
+		<div class="row">
+
+		
+			<div id="desc_div" class="col-md-6 col-lg-6 col-md=offset-3 col-lg-offset-3 col-sm-10 col-sm-offset-1">
+
+				<img class="cross" src="{% static 'images/cross1.png' %}">
+				<center><h3>Description</h3></center>
+				{% block desc %}
+				{% endblock %}
+				
+		
+
+			</div>
+
+
+			<div id="rules_div" class="col-md-6 col-lg-6 col-md=offset-3 col-lg-offset-3 col-sm-10 col-sm-offset-1">
+				<img class="cross" src="{% static 'images/cross1.png' %}">
+				<center><h3>Rules And Regulations</h3></center>
+				{% block rules %}
+				{% endblock %}
+				
+
+			</div>
+
+
+			<div id="cord_div" class="col-md-6 col-lg-6 col-md=offset-3 col-lg-offset-3 col-sm-10 col-sm-offset-1">
+				<img class="cross" src="{% static 'images/cross1.png' %}">
+				<center><h3>Coordinators</h3></center>
+				{% if coordinator %}
+					
+					<div class="row">
+						
+						{% for c in coordinator %} 
+
+							<div class="col-lg-6 col-md-6 col-sm-10">
+								<center>
+								<img style="height:200px;width:200px;" src="{{ c.cimage.url }}" alt="{{c.cname}}" class="cord_image img-responsive img-rounded" />
+								
+									<p class="pp"><b>{{c.cname}}</b></p>
+									<p class="pp"><span class="glyphicon glyphicon-earphone"><b> {{c.cmobile}}</b></span></p>
+									<p class="pp"><span class="glyphicon glyphicon-envelope"><b> <a href="https://gmail.com">{{c.cemail}}</a></b></span></p>
+
+									<style type="text/css">
+										.pp, a {
+											color:#1C2833;
+											font-family: arial;
+										}
+
+									</style>
+
+								</center>
+							</div>
+							
+						{% endfor %}
+						
+					</div>
+					
+				{% else %}
+					<h1>No details for now</h1>
+				{% endif %}
+				
+				
+			</div>
+
+
+			<div id="reg_div" class="col-md-6 col-lg-6 col-md=offset-3 col-lg-offset-3 col-sm-10 col-sm-offset-1">
+				<img class="cross" src="{% static 'images/cross1.png' %}">
+				<center><h3>Register</h3></center>
+
+				{% block reg %}
+				{% endblock %}
+
+			</div>
+		</div>	
+	</div>
+	
+</body>
+</html>

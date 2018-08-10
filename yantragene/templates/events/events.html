@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href={% static "css/events.css" %}>
+<script type="text/javascript" src={% static "javascript/events.js" %}></script>
+
+{% endblock %}
+
+{% block body %}
+<center><p style="color:red;">{{ msg }}</p></center>
+<div class="container-fluid">
+	<center><h1 id="ev_header">Events</h1></center>
+	<div class="row">
+		<div id="fade_view">
+		{% if outer_event_list %}
+			{% for d,elist in outer_event_list.items %}
+
+				
+				<div class="col-md-6 col-lg-3 col-sm-10">
+				    <div class="thumbnail dept_box">
+				      
+				        <img src="{{ d.dimage.url }}" alt="{{d.dname}}" style="width:100%">
+				        <div class="caption">
+				          	<center><h3>{{d.dname}}</h1></center>
+				        </div>
+				        <ul class="list-unstyled">
+				        {% for e in elist %}
+
+				        	<center><li><p><b><a href="{% url 'events:detail' id=e.id %}">{{e.ename}}</a></b></p></li></center>
+				        		
+			        	{% endfor %}
+				        </ul>
+				     
+				    </div>
+				</div>
+
+
+
+	    	{% endfor %}
+	    {% else %}
+			<h1>No Data</h1>
+		{% endif %}
+		</div>
+	
+</div>
+
+<style>
+	h1{
+		color:#E5E7E9;
+	}
+	h3{
+		color:#2C3E50;
+	}
+	.dept_box{
+		height:410px;
+	}
+	img{
+		width:250px;
+		height: 250px;
+		margin:3px;
+	}
+	p{
+
+		color:black;
+		font-family:tahoma;
+	}
+	p:hover{
+		text-decoration: none !important;
+		color:#566573;
+	}
+	#fade_view,#ev_header{
+		display:none;
+	}
+	
+</style>
+
+{% endblock %}
+	
+
