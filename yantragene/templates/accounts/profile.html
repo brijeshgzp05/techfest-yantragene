@@ -18,17 +18,16 @@
 				<h3><b>Team Name : </b>{{p.team_name}}</h3>
 				<h3><b>Event Name : </b>{{p.events_name}}</h3>
 				<h4><b>Member(s) :</b>You, {{p.member2}} {{p.member3}} {{pt.member4}}</h4>
-				<button class="btn btn-default btn-danger">
-					<a href="{% url 'accounts:delete' id=p.id proid=user.profile.id %}" onclick="return confirm('Are you sure?')">Remove</a>
-				</button>
+
+					<a class="btn btn-default btn-danger" href="{% url 'accounts:delete' id=p.id proid=user.profile.id %}" onclick="return confirm('Are you sure?')">Remove</a>
 			</div>
 			{% endfor %}
 		
 		{% else %}
 			<p class="white">You have Not Participated in any event yet.</p>
-			<button class="btn btn-default btn-info">
-					<a href="{% url 'events:events' %}">Paricipate</a>
-				</button>
+			
+					<a class="btn btn-default btn-info" href="{% url 'events:events' %}">Paricipate</a>
+				
 		{% endif %}
 		{% else %}
 			<p class="white">You have Not Participated in any event.</p>

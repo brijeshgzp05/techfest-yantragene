@@ -83,7 +83,7 @@
 		<br><br>
 	{% else %}
 		<h2>You are not logged in.</h2><br>
-		<button class="btn btn-default btn-info"><a href="{% url 'accounts:login' %}">Click Here To Login/Register</a></button>
+		<a class="btn btn-default btn-info" href="{% url 'accounts:login' %}">Click Here To Login/Register</a>
 		<br>
 	{% endif %}
 

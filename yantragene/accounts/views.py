@@ -3,6 +3,7 @@ from django.shortcuts import render, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import (
 
 	authenticate,
@@ -73,12 +74,12 @@ def login_view(request):
 			return render(request, 'accounts/login.html', {'msg':"Sorry, Error In Login"})
 	else:
 		return render(request, 'accounts/login.html', {'msg':""})
-
+@login_required
 def logout_view(request):
 	logout(request)
 	return HttpResponseRedirect(reverse('home:home'))
 
-
+@login_required
 def profile_view(request, id=None):
 	participant = Participant.objects.filter(profile=id)
 	context = {
@@ -87,7 +88,7 @@ def profile_view(request, id=None):
 	}
 
 	return render(request, 'accounts/profile.html', context)
-
+@login_required
 def delete_event(request, id=None, proid=None):
 	
 	try:

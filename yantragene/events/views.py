@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 from .models import (
 
 	Department,
@@ -51,7 +52,7 @@ def event_detail(request, id=None):
 	
 	return render(request, page, context)
 
-
+@login_required
 def register_view(request):
 	
 	team_name = request.GET['team_name']
